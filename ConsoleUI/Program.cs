@@ -10,6 +10,31 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //CarDetailTest();
+            //RentalTest();
+
+        }
+
+        private static void RentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            var result = rentalManager.Add(new Rental()
+            {
+                CarId = 1,
+                CustomerId = 1,
+                ReturnDate = DateTime.Now,
+            });
+            Console.WriteLine(result.Message);
+
+            foreach (var item in rentalManager.GetAll(new Rental()).Data)
+            {
+                Console.WriteLine(item.CarId);
+            }
+        }
+
+        private static void CarDetailTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
 
             foreach (var car in carManager.GetCarDetails().Data)

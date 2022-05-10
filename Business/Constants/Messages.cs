@@ -12,6 +12,7 @@ namespace Business.Constants
         public static string CarAdded = "Car added";
         public static string CarNameInvalid = "Car name invalid";
         public static string DailyPriceInvalid = "Daily price invalid";
+        public static string ReturnInvalid = "In order for the car to be rented, the car must be delivered";
 
     }
 }
