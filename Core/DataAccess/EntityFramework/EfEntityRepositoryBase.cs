@@ -1,4 +1,5 @@
-﻿using Core.Entities;
+﻿
+using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,20 +34,19 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
-        {
-            using (TContext context = new TContext())
-            {
-                return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
-            }
-        }
-
-
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
             using (TContext context = new TContext())
             {
                 return context.Set<TEntity>().SingleOrDefault(filter);
+            }
+        }
+
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        {
+            using (TContext context = new TContext())
+            {
+                return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
             }
         }
 

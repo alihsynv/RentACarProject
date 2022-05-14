@@ -8,6 +8,7 @@ namespace Business.Constants
 {
     public class Messages
     {
+        public static string CarsListed = "Cars listed";
         public static string CarListed = "Car listed";
         public static string CarAdded = "Car added";
         public static string CarNameInvalid = "Car name invalid";
