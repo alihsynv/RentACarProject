@@ -27,7 +27,7 @@ namespace ConsoleUI
             });
             Console.WriteLine(result.Message);
 
-            foreach (var item in rentalManager.GetAll(new Rental()).Data)
+            foreach (var item in rentalManager.GetAll().Data)
             {
                 Console.WriteLine(item.CarId);
             }
