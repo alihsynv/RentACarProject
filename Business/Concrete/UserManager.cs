@@ -26,26 +26,14 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        public IResult Delete(User user)
+        public IDataResult<User> GetByMail(string email)
         {
-            _userDal.Delete(user);
-            return new SuccessResult();
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email));
         }
 
-        public IDataResult<List<User>> GetAll()
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll());
-        }
-
-        public IDataResult<User> GetById(int id)
-        {
-            return new SuccessDataResult<User>(_userDal.Get(u=> u.Id == id));
-        }
-
-        public IResult Update(User user)
-        {
-            _userDal.Update(user);
-            return new SuccessResult();
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
         }
     }
 }
