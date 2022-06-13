@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,6 @@ namespace Business.Constants
         public static string CarNameInvalid = "Car name invalid";
         public static string DailyPriceInvalid = "Daily price invalid";
         public static string ReturnInvalid = "In order for the car to be rented, the car must be delivered";
-
+        public static string UserNotFound = "User not found";
     }
 }
