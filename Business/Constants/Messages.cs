@@ -16,5 +16,8 @@ namespace Business.Constants
         public static string DailyPriceInvalid = "Daily price invalid";
         public static string ReturnInvalid = "In order for the car to be rented, the car must be delivered";
         public static string UserNotFound = "User not found";
+        public static string PasswordError = "Password error";
+        public static string SuccessfulLogin = "Successful login";
+        public static string UserAlreadyExists = "User already exists";
     }
 }
