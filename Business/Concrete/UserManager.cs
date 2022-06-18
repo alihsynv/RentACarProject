@@ -1,13 +1,10 @@
-﻿using Business.Abstract;
-using Business.Constants;
-using Core.Entities.Concrete;
-using Core.Utilities.Results;
-using DataAccess.Abstract;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Business.Abstract;
+using Core.Entities.Concrete;
+using DataAccess.Abstract;
+using Entities.Concrete;
 
 namespace Business.Concrete
 {
@@ -20,20 +17,19 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        public IResult Add(User user)
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
+
+        public void Add(User user)
         {
             _userDal.Add(user);
-            return new SuccessResult();
         }
 
-        public IDataResult<User> GetByMail(string email)
+        public User GetByMail(string email)
         {
-            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email));
-        }
-
-        public IDataResult<List<OperationClaim>> GetClaims(User user)
-        {
-            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }

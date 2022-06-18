@@ -7,9 +7,9 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : Controller
     {
-        IAuthService _authService;
+        private IAuthService _authService;
 
         public AuthController(IAuthService authService)
         {
@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(UserForLoginDto userForLoginDto)
+        public ActionResult Login(UserForLoginDto userForLoginDto)
         {
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)
@@ -30,11 +30,12 @@ namespace WebAPI.Controllers
             {
                 return Ok(result.Data);
             }
+
             return BadRequest(result.Message);
         }
 
         [HttpPost("register")]
-        public IActionResult Register(UserForRegisterDto userForRegisterDto)
+        public ActionResult Register(UserForRegisterDto userForRegisterDto)
         {
             var userExists = _authService.UserExists(userForRegisterDto.Email);
             if (!userExists.Success)
@@ -48,6 +49,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result.Data);
             }
+
             return BadRequest(result.Message);
         }
     }
